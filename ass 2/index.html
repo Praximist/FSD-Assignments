@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A dynamic page demonstrating JavaScript DOM manipulation and jQuery.">
+    <title>DOM + jQuery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#top">dom<span>.</span></a>
+      <span class="header-note">A page in motion</span>
+    </header>
+
+    <main id="top">
+      <section class="intro">
+        <p class="eyebrow">JAVASCRIPT / JQUERY</p>
+        <h1>Make the page<br><em>do something.</em></h1>
+        <p class="intro-copy">Try an action below and see the page update.</p>
+      </section>
+
+      <section class="demo-section" aria-labelledby="dom-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">01</p><h2 id="dom-title">JavaScript and the DOM</h2></div>
+        </div>
+
+        <div class="workbench">
+          <section class="preview" aria-label="DOM preview">
+            <div class="panel-label"><span>PREVIEW</span><span class="ready"><i></i>READY</span></div>
+            <div class="preview-body">
+              <h3 id="sample-heading">A small change goes a long way.</h3>
+              <div id="sample-copy">
+                <p>This is the first sample paragraph.</p>
+                <p class="sample-line">This is the second sample paragraph.</p>
+              </div>
+              <div class="stage">
+                <span id="moving-chip">MOVE ME</span>
+                <span class="stage-caption">POSITION</span>
+              </div>
+              <div class="image-frame">
+                <img id="sample-image" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=85" alt="Mountain landscape reflected in a lake">
+              </div>
+              <ul id="node-list" aria-label="Text nodes">
+                <li class="base-node">Parent node</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="controls" aria-label="DOM controls">
+            <div class="panel-label"><span>DOM CONTROLS</span><span>JS</span></div>
+            <div class="control-row">
+              <div><h3>Find an element by ID</h3><p>Change the heading with <code>innerHTML</code>.</p></div>
+              <button id="heading-button" type="button">Change heading <span>↗</span></button>
+            </div>
+            <div class="control-row">
+              <div><h3>Find elements by tag</h3><p>Recolor both paragraphs with <code>getElementsByTagName</code>.</p></div>
+              <button id="tag-button" type="button">Change paragraph color <span>↗</span></button>
+            </div>
+            <div class="control-row">
+              <div><h3>Find an element by class</h3><p>Update the status with <code>getElementsByClassName</code>.</p></div>
+              <p class="class-status">Waiting for an update.</p>
+              <button id="class-button" type="button">Update status <span>↗</span></button>
+            </div>
+            <div class="control-row">
+              <div><h3>Change CSS properties</h3><p>Update the chip’s color and position.</p></div>
+              <button id="position-button" type="button">Move the chip <span>↗</span></button>
+            </div>
+            <div class="control-row">
+              <div><h3>Change an image</h3><p>Set a different image source on click.</p></div>
+              <button id="image-button" type="button">Change image <span>↗</span></button>
+            </div>
+            <div class="control-row node-row">
+              <div><h3>Add or delete a node</h3><p>Add a text node to the list or remove the latest one.</p></div>
+              <div class="button-pair">
+                <button id="add-node-button" type="button">Add text node <span>＋</span></button>
+                <button class="secondary-button" id="delete-node-button" type="button">Delete latest</button>
+              </div>
+            </div>
+            <p class="feedback" id="dom-feedback" role="status" aria-live="polite">Ready.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="demo-section jquery-section" aria-labelledby="jquery-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">02</p><h2 id="jquery-title">jQuery</h2></div>
+        </div>
+        <div class="jquery-layout">
+          <section class="jquery-controls" aria-label="jQuery controls">
+            <div class="jquery-row">
+              <div><h3>Change button text</h3><p>Update its label with jQuery.</p></div>
+              <button id="jquery-text-button" type="button">Rename button <span>↗</span></button>
+            </div>
+            <div class="jquery-row">
+              <div><h3>Set a background image</h3><p>Apply an image with the jQuery CSS method.</p></div>
+              <button id="jquery-background-button" type="button">Set background <span>↗</span></button>
+            </div>
+            <div class="jquery-row">
+              <div><h3>Add an attribute</h3><p>Add a title attribute to the sample image.</p></div>
+              <button id="jquery-attribute-button" type="button">Add image title <span>↗</span></button>
+            </div>
+            <div class="jquery-backdrop" id="jquery-backdrop" aria-label="Background image example"></div>
+          </section>
+
+          <form class="form-panel" id="contact-form">
+            <div class="panel-label"><span>FORM DATA</span><span>jQUERY</span></div>
+            <h3>Form values</h3>
+            <label for="visitor-name">Name</label>
+            <input id="visitor-name" name="name" type="text" required>
+            <label for="visitor-email">Email</label>
+            <input id="visitor-email" name="email" type="email" required>
+            <label for="visitor-message">Message</label>
+            <textarea id="visitor-message" name="message" rows="3" required></textarea>
+            <button class="submit-button" type="submit">Read form data <span>→</span></button>
+            <output id="form-output" aria-live="polite">Form values appear here.</output>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
