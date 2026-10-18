@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f3ee">
+    <title>Collection Studio — Fieldnotes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <script src="admin.js" defer></script>
+  </head>
+  <body>
+    <header class="admin-header">
+      <a class="brand" href="/">fieldnotes<span>.</span></a>
+      <div class="studio-label"><span class="status-light"></span> COLLECTION STUDIO</div>
+      <a class="back-link" href="/">View storefront <span aria-hidden="true">↗</span></a>
+    </header>
+    <main class="admin-main">
+      <div class="page-heading"><div><p class="eyebrow">YOUR WORKSHOP</p><h1>Collection studio</h1></div><span class="updated-label" id="updated-label">Changes save to MongoDB</span></div>
+      <section class="overview" aria-label="Collection overview">
+        <div><span class="overview-label">TOTAL OBJECTS</span><strong id="total-count">—</strong></div>
+        <div><span class="overview-label">FEATURED PICKS</span><strong id="featured-count">—</strong></div>
+        <div><span class="overview-label">AVERAGE PRICE</span><strong id="average-price">—</strong></div>
+      </section>
+      <div class="admin-layout">
+        <section class="product-manager" aria-labelledby="products-heading">
+          <div class="section-heading"><div><p class="eyebrow">THE SHELF</p><h2 id="products-heading">All products</h2></div><button class="primary-button add-button" id="new-product" type="button"><span aria-hidden="true">+</span> New product</button></div>
+          <div class="table-heading" aria-hidden="true"><span>PRODUCT</span><span>CATEGORY</span><span>PRICE</span><span>STATUS</span><span>ACTIONS</span></div>
+          <div class="product-list" id="product-list" aria-live="polite" aria-busy="true"></div>
+        </section>
+        <aside class="form-panel" id="form-panel" aria-labelledby="form-title">
+          <div class="form-heading"><div><p class="eyebrow" id="form-eyebrow">ADD TO THE SHELF</p><h2 id="form-title">New product</h2></div><button class="icon-button close-button" id="close-form" type="button" aria-label="Close form" title="Close">×</button></div>
+          <form id="product-form">
+            <label class="form-field"><span>Product name</span><input name="name" required minlength="2" maxlength="90" placeholder="e.g. Arc Table Lamp"></label>
+            <div class="form-row">
+              <label class="form-field"><span>Category</span><input name="category" required maxlength="40" placeholder="Lighting"></label>
+              <label class="form-field"><span>Price <small>USD</small></span><input name="price" type="number" required min="0.01" max="1000000" step="0.01" placeholder="0.00"></label>
+            </div>
+            <label class="form-field"><span>Image URL</span><input name="image" type="url" required placeholder="https://…"></label>
+            <label class="form-field"><span>Short description</span><textarea name="description" required minlength="8" maxlength="500" rows="4" placeholder="What makes this object worth keeping?"></textarea><small class="character-count" id="description-count">0 / 500</small></label>
+            <label class="featured-toggle"><input name="featured" type="checkbox"><span class="toggle-mark" aria-hidden="true"></span><span>Feature this pick</span></label>
+            <div class="form-error" id="form-error" role="alert"></div>
+            <div class="form-actions"><button class="primary-button save-button" type="submit" id="save-button">Add product</button><button class="secondary-button" id="cancel-edit" type="button">Cancel</button></div>
+          </form>
+        </aside>
+      </div>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog class="confirm-dialog" id="delete-dialog" aria-labelledby="delete-title">
+      <p class="eyebrow">REMOVE OBJECT</p><h2 id="delete-title">Take it off the shelf?</h2><p>This product will be permanently removed from your collection.</p>
+      <div><button class="secondary-button" id="keep-product" type="button">Keep product</button><button class="danger-button" id="confirm-delete" type="button">Remove product</button></div>
+    </dialog>
+  </body>
+</html>
